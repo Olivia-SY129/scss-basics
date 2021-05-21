@@ -1,0 +1,170 @@
+.container h1 {
+  color: royalblue;
+}
+.container ul li .name {
+  color: greenyellow;
+}
+.container ul li .age {
+  color: tomato;
+}
+.container ul li .age.next-year {
+  color: goldenrod;
+}
+.container ul li .age:last-child {
+  color: cadetblue;
+}
+.container .font-s {
+  font-size: 12px;
+}
+.container .font-m {
+  font-size: 14px;
+}
+.container .font-l {
+  font-size: 16px;
+}
+
+.box {
+  font-weight: bold;
+  font-size: 50px;
+  font-family: sans-serif;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 0;
+}
+
+.var {
+  top: 100px;
+}
+.var .item {
+  width: 100px;
+  height: 100px;
+  transform: translateX(100px);
+}
+
+.Mixins {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+}
+.Mixins .item {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: royalblue;
+}
+
+.loop .box:nth-child(1) {
+  font-size: 12px;
+}
+
+.loop .box:nth-child(2) {
+  font-size: 24px;
+}
+
+.loop .box:nth-child(3) {
+  font-size: 36px;
+}
+
+.loop .box:nth-child(4) {
+  font-size: 48px;
+}
+
+.loop .box:nth-child(5) {
+  font-size: 60px;
+}
+
+.loop .box:nth-child(6) {
+  font-size: 72px;
+}
+
+.func {
+  font-size: 50px;
+}
+
+.color-func .box {
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  background-color: royalblue;
+}
+.color-func .box.built-in {
+  background-color: #a03571;
+}
+
+.loop .box {
+  color: orange;
+}
+
+.loop .box {
+  color: royalblue;
+}
+
+.loop .box {
+  color: yellow;
+}
+
+.loop .box {
+  color: red;
+}
+
+.loop .box {
+  color: black;
+}
+
+.loop .box {
+  color: green;
+}
+
+.map .box-o {
+  color: orange;
+}
+
+.map .box-rb {
+  color: royalblue;
+}
+
+.map .box-y {
+  color: yellow;
+}
+
+.map .box-r {
+  color: red;
+}
+
+.map .box-b {
+  color: black;
+}
+
+.map .box-g {
+  color: green;
+}
+
+/*
+// @content
+@mixin left-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @content;
+}
+
+.box {
+  width: 200px;
+  height: 300px;
+  @include left-top {
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+*/
+
+/*# sourceMappingURL=/main.39afc03c.css.map */

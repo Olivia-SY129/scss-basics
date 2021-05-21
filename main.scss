@@ -1,0 +1,195 @@
+$color: royalblue;
+
+.container {
+  h1 {
+    color: $color;
+  }
+  ul {
+    li {
+      .name {
+        color: greenyellow;
+      }
+      .age {
+        color: tomato;
+        &.next-year {
+          color: goldenrod;
+        }
+        &:last-child {
+          color: cadetblue;
+        }
+      }
+    }
+  }
+
+  // & 상위 선택자 참조
+  .font {
+    &-s {
+      font-size: 12px;
+    }
+    &-m {
+      font-size: 14px;
+    }
+    &-l {
+      font-size: 16px;
+    }
+  }
+}
+
+// 중첩
+.box {
+  font: {
+    weight: bold;
+    size: 50px;
+    family: sans-serif;
+  }
+  margin: {
+    top: 10px;
+    left: 10px;
+  }
+  padding: {
+    top: 10px;
+    bottom: 40px;
+    left: 20px;
+    right: 0;
+  }
+}
+
+// 변수
+// 유효범위 주의
+// {} 내부에서만 사용 가능
+// 그렇지만 {} 내부에서 바뀌면 전역 변수도 함께 변경됨.
+$size: 100px;
+
+.var {
+  top: $size;
+  .item {
+    width: $size;
+    height: $size;
+    transform: translateX($size);
+  }
+}
+
+// 산술 연산
+// 주의: 단위가 같아야 함. 100% - 12px 는 사용 불가
+// 이 경우 calc(100% - 12px) 라고 써야 함.
+// 나눗셈을 제외하고 js 와 같음
+// 나눗셈은 단축 속성과 같은 기호이기 때문
+// 1. 계산할 부분을 ()로 묶어놓을 것. e.g. (12px / 2)
+// 2. 변수를 사용해도 적용됨. e.g. $size / 2
+// 3. 다른 연산자와 함께 사용 e.g. 10px + 12px / 2
+
+// 재활용 Mixins
+// @minxin 이름; & @include 이름;
+// 인수 사용 가능!!
+// 기본값 역시 세팅 가능
+// 중복을 피하거나 인수의 순서를 바꿀 때는 키워드 인수 사용
+@mixin center($size: 100px, $color: orange) {
+  width: $size;
+  height: $size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color;
+}
+.Mixins {
+  @include center(200px);
+  .item {
+    @include center($color: royalblue); // 키워드 인수
+  }
+}
+
+// 반복문
+// 선택자의 경우 #{}를 사용
+@for $i from 1 through 6 {
+  .loop .box:nth-child(#{$i}) {
+    font-size: 12px * $i;
+  }
+}
+
+// 함수
+@function ratio($size, $ratio) {
+  @return $size * $ratio;
+}
+
+.func {
+  font-size: ratio($size, 1/2);
+}
+
+// 색상 내장 함수
+// mix(색1, 색2)
+// lighten(색, %)
+// darken (색, %)
+// saturate(색, %)
+// desaturate(색, %)
+// grayscale(색)
+// invert(색)
+// rgba(색, 투명도)
+.color-func {
+  .box {
+    $color: royalblue;
+    width: 200px;
+    height: 100px;
+    margin: 20px;
+    background-color: $color;
+    &.built-in {
+      background-color: mix($color, red);
+    }
+  }
+}
+
+// 가져오기 @import
+// @import url("주소")
+// 또는 @import "주소"
+// 여러 파일도 가능 @import "주소1", "주소2"
+
+// 데이터 종류
+$number: 1;
+$string: bold;
+$color: red;
+$boolean: true;
+$null: null;
+$list: orange, royalblue, yellow, red, black, green;
+$map: (
+  o: orange,
+  rb: royalblue,
+  y: yellow,
+  r: red,
+  b: black,
+  g: green,
+);
+
+.box {
+  position: null; // 컴파일된 css 에 보이지 않음
+}
+
+// @each
+@each $c in $list {
+  .loop .box {
+    color: $c;
+  }
+}
+
+@each $k, $v in $map {
+  .map .box-#{$k} {
+    color: $v;
+  }
+}
+/*
+// @content
+@mixin left-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @content;
+}
+
+.box {
+  width: 200px;
+  height: 300px;
+  @include left-top {
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+*/
